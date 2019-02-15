@@ -1,0 +1,241 @@
+---
+title: "SRT411A0.Rmd"
+author: "Adam Gallagher"
+date: "February 6, 2019"
+username: "intotheewild"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Github Username: IntoTheeWild
+## Link https://github.com/intotheewild/SRT411-Assignment-0
+
+## Introduction
+
+In this assignment I will be working through the "A (very) short introudction to R" document. As described in the instructions I will be completing the 14 todos listed and including them in this report made with Knitr and R Markdown. 
+
+## Todo 1
+
+Compute the difference between 2014 and the
+year you started at this university and divide
+this by the difference between 2014 and the year
+you were born. Multiply this with 100 to get
+the percentage of your life you have spent at
+this university. Use brackets if you need them.
+
+```{r}
+(2017-2014)/(2014-1994)*100
+```
+
+## Todo 2 
+
+Repeat the previous ToDo, but with several
+steps in between. You can give the variables
+any name you want, but the name has to start
+with a letter
+
+```{r}
+s = (2017-2014)
+l = (2014-1994)
+p = 100
+s/l*p
+```
+
+## Todo 3
+
+Compute the sum of 4, 5, 8 and 11 by first combining them into a vector and then using the
+function sum.
+
+```{r}
+v = c(4,5,8,11)
+sum(v)
+```
+
+## Todo 4
+
+Plot 100 normal random numbers.
+
+```{r}
+x = rnorm(100)
+plot(x)
+```
+
+## Todo 5
+
+Find help for the sqrt function
+
+```{r}
+help(sqrt)
+```
+
+## Todo 6
+
+Make a file called firstscript.R containing Rcode that generates 100 random numbers and
+plots them, and run this script several times.
+
+``` {r}
+for (y in c(1,2,3)){
+  plot(rnorm(100))
+}
+```
+
+## Todo 7
+
+Put the numbers 31 to 60 in a vector named
+P and in a matrix with 6 rows and 5 columns
+named Q. Tip: use the function seq. Look at
+the different ways scalars, vectors and matrices
+are denoted in the workspace window.
+
+``` {r}
+
+P = c(31-60)
+
+Q = matrix(data = P,nrow = 6, ncol = 5)
+
+```
+
+## Todo 8
+
+Make a script file which constructs three random normal vectors of length 100. Call these
+vectors x1, x2 and x3. Make a data frame called
+t with three columns (called a, b and c) containing respectively x1, x1+x2 and x1+x2+x3.
+Call the following functions for this data frame:
+plot(t) and sd(t). Can you understand the
+results? Rerun this script a few times.
+
+```{r}
+x1 = c(rnorm(100))
+x2 = c(rnorm(100))
+x3 = c(rnorm(100))
+
+t = data.frame(a = x1, b = x1+x2, c = x1+x2+x3)
+plot(t)
+```
+
+## Todo 9
+
+Add these lines to the script file of the previous
+section. Try to find out, either by experimenting or by using the help, what the meaning is of
+rgb, the last argument of rgb, lwd, pch, cex
+
+
+```{r}
+
+x1 = c(rnorm(100))
+x2 = c(rnorm(100))
+x3 = c(rnorm(100))
+
+t = data.frame(a = x1, b = x1+x2, c = x1+x2+x3)
+
+plot(t$a, type="l", ylim=range(t),
+lwd=3, col=rgb(1,0,0,0.3))
+lines(t$b, type="s", lwd=2,
+col=rgb(0.3,0.4,0.3,0.9))
+points(t$c, pch=20, cex=4,
+col=rgb(0,0,1,0.3))
+```
+
+## Todo 10
+
+Make a file called tst1.txt in Notepad from
+the example in Figure 4 and store it in your
+working directory. Write a script to read it, to
+multiply the column called g by 5 and to store
+it as tst2.txt.
+
+``` {r}
+
+x = data.frame(y = c(3,4,5))
+
+write.table(x, file="tst1.txt",row.names=FALSE)
+
+x$y = x$y*5
+
+write.table(x, file="tst2.txt",row.names=FALSE)
+
+```
+
+## Todo 11
+
+Compute the mean of the square root of a vector of 100 random numbers. What happens?
+
+```{r}
+x = c(rnorm(100))
+
+y = sqrt(x)
+
+mean(y, na.rm=TRUE)
+
+```
+NaN or "not a number" is returned specifing that the result of this is not a number or a number that can't be represented such as infinity (the result isn't valid)
+
+## Todo 12
+
+Make a graph with on the x-axis: today, Sinterklaas 2014 and your next birthday and on
+the y-axis the number of presents you expect on
+each of these days. Tip: make two vectors first.
+```{r}
+x = strptime( c("20190206","20141225","20191117"), format="%Y%m%d")
+
+y = c(0, 1, 10)
+
+plot(x,y)
+
+```
+## Todo 13
+
+Make a vector from 1 to 100. Make a for-loop
+which runs through the whole vector. Multiply
+the elements which are smaller than 5 and larger
+than 90 with 10 and the other elements with 0.1.
+
+```{r}
+
+for (x in y) {
+  if (x < 5) {
+    x = x*10
+  }
+  else if (x > 90) {
+    x = x*10
+  }
+  else {
+    x = x*0.1
+  }
+} 
+
+```
+
+## Todo 14
+
+Write a function for the previous ToDo, so
+that you can feed it any vector you like
+(as argument). Use a for-loop in the function to do the computation with each element. Use the standard R function length
+in the specification of the counter. 
+
+```{r}
+
+todo = function(y) {
+  for (x in y) {
+    if (x < 5) {
+      x = x*10
+    }
+    else if (x > 90) {
+      x = x*10
+    }
+    else {
+      x = x*0.1
+    }
+  }
+}
+
+
+```  
+
+## Todo 15
+
+This report.
+
+
